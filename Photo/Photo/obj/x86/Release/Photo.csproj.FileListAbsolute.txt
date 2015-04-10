@@ -1,0 +1,14 @@
+C:\Users\vo_000\AppData\Local\Temporary Projects\Photo\bin\Release\Photo.exe
+C:\Users\vo_000\AppData\Local\Temporary Projects\Photo\bin\Release\Photo.pdb
+C:\Users\vo_000\AppData\Local\Temporary Projects\Photo\obj\x86\Release\Photo.frMain.resources
+C:\Users\vo_000\AppData\Local\Temporary Projects\Photo\obj\x86\Release\Photo.Properties.Resources.resources
+C:\Users\vo_000\AppData\Local\Temporary Projects\Photo\obj\x86\Release\Photo.csproj.GenerateResource.Cache
+C:\Users\vo_000\AppData\Local\Temporary Projects\Photo\obj\x86\Release\Photo.exe
+C:\Users\vo_000\AppData\Local\Temporary Projects\Photo\obj\x86\Release\Photo.pdb
+E:\Winform\Photo\Photo\bin\Release\Photo.exe
+E:\Winform\Photo\Photo\bin\Release\Photo.pdb
+E:\Winform\Photo\Photo\obj\x86\Release\Photo.frMain.resources
+E:\Winform\Photo\Photo\obj\x86\Release\Photo.Properties.Resources.resources
+E:\Winform\Photo\Photo\obj\x86\Release\Photo.csproj.GenerateResource.Cache
+E:\Winform\Photo\Photo\obj\x86\Release\Photo.exe
+E:\Winform\Photo\Photo\obj\x86\Release\Photo.pdb

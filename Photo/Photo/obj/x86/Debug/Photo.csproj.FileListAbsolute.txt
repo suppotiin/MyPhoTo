@@ -1,0 +1,33 @@
+C:\Users\vo_000\AppData\Local\Temporary Projects\Photo\obj\x86\Debug\Photo.frMain.resources
+C:\Users\vo_000\AppData\Local\Temporary Projects\Photo\obj\x86\Debug\Photo.Properties.Resources.resources
+C:\Users\vo_000\AppData\Local\Temporary Projects\Photo\obj\x86\Debug\Photo.csproj.GenerateResource.Cache
+C:\Users\vo_000\AppData\Local\Temporary Projects\Photo\bin\Debug\Photo.exe
+C:\Users\vo_000\AppData\Local\Temporary Projects\Photo\bin\Debug\Photo.pdb
+C:\Users\vo_000\AppData\Local\Temporary Projects\Photo\obj\x86\Debug\Photo.exe
+C:\Users\vo_000\AppData\Local\Temporary Projects\Photo\obj\x86\Debug\Photo.pdb
+E:\Winform\Photo\Photo\obj\x86\Debug\Photo.exe
+E:\Winform\Photo\Photo\obj\x86\Debug\Photo.pdb
+E:\Winform\Photo\Photo\bin\Debug\Photo.exe
+E:\Winform\Photo\Photo\bin\Debug\Photo.pdb
+E:\Winform\Photo\Photo\obj\x86\Debug\Photo.frMain.resources
+E:\Winform\Photo\Photo\obj\x86\Debug\Photo.Properties.Resources.resources
+E:\Winform\Photo\Photo\obj\x86\Debug\Photo.csproj.GenerateResource.Cache
+E:\Winform\Photo\Photo\obj\x86\Debug\Photo.csprojResolveAssemblyReference.cache
+D:\HoangPhiHung_VoManhHung-master\HoangPhiHung_VoManhHung-master\Photo\Photo\bin\Debug\Photo.exe
+D:\HoangPhiHung_VoManhHung-master\HoangPhiHung_VoManhHung-master\Photo\Photo\bin\Debug\Photo.pdb
+D:\HoangPhiHung_VoManhHung-master\HoangPhiHung_VoManhHung-master\Photo\Photo\obj\x86\Debug\Photo.csprojResolveAssemblyReference.cache
+D:\HoangPhiHung_VoManhHung-master\HoangPhiHung_VoManhHung-master\Photo\Photo\obj\x86\Debug\Photo.frMain.resources
+D:\HoangPhiHung_VoManhHung-master\HoangPhiHung_VoManhHung-master\Photo\Photo\obj\x86\Debug\Photo.Properties.Resources.resources
+D:\HoangPhiHung_VoManhHung-master\HoangPhiHung_VoManhHung-master\Photo\Photo\obj\x86\Debug\Photo.csproj.GenerateResource.Cache
+D:\HoangPhiHung_VoManhHung-master\HoangPhiHung_VoManhHung-master\Photo\Photo\obj\x86\Debug\Photo.exe
+D:\HoangPhiHung_VoManhHung-master\HoangPhiHung_VoManhHung-master\Photo\Photo\obj\x86\Debug\Photo.pdb
+D:\XuanTruong-TinHung\XuanTruong-TinHung\Photo\Photo\obj\x86\Debug\Photo.exe
+D:\XuanTruong-TinHung\XuanTruong-TinHung\Photo\Photo\obj\x86\Debug\Photo.pdb
+E:\LTNC\Photo\Photo\obj\x86\Debug\Photo.exe
+E:\LTNC\Photo\Photo\obj\x86\Debug\Photo.pdb
+E:\LTNC\Photo\Photo\bin\Debug\Photo.exe
+E:\LTNC\Photo\Photo\bin\Debug\Photo.pdb
+E:\LTNC\Photo\Photo\obj\x86\Debug\Photo.csprojResolveAssemblyReference.cache
+E:\LTNC\Photo\Photo\obj\x86\Debug\Photo.frMain.resources
+E:\LTNC\Photo\Photo\obj\x86\Debug\Photo.Properties.Resources.resources
+E:\LTNC\Photo\Photo\obj\x86\Debug\Photo.csproj.GenerateResource.Cache
