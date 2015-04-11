@@ -1,0 +1,298 @@
+# MyPhoTo
+#Form1
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using PhotoAlbum;
+
+namespace MyPhotos
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+            NewAlbum();
+            mnuView.DropDown = contextMenuStrip1;
+            SetStatusStrip(null);
+            mnuView.DropDown = contextMenuStrip1;
+        }
+        private AlbumManager manager;
+        private AlbumManager Manager
+        {
+            get { return manager; }
+            set { manager = value; }
+        }
+        private void mnuLoad_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Title = "Open Photo";
+            dlg.Filter = "jpg file(*.jpg)|*.jpg|All files (*.*)|*.*";
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    pbxPhoto.Image = new Bitmap(dlg.OpenFile());
+                }
+                catch (ArgumentException ex)
+                {
+                    MessageBox.Show("Khong the load files: " + ex.Message);
+                    pbxPhoto.Image = null;
+                }
+                SetStatusStrip(dlg.FileName);
+            }
+
+
+            dlg.Dispose();
+        }
+
+        private void mnuImage_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            ProcessImageClick(e);
+        }
+        private void ProcessImageClick(ToolStripItemClickedEventArgs e)
+        {
+            ToolStripItem item = e.ClickedItem;
+            string enumVal = item.Tag as string;
+            if (enumVal != null)
+                {
+                    pbxPhoto.SizeMode = (PictureBoxSizeMode)
+                        Enum.Parse(typeof(PictureBoxSizeMode),enumVal);
+                }
+        }
+
+        private void mnuImage_DropDownOpening(object sender, EventArgs e)
+        {
+            ProcessImageOpening(sender as ToolStripDropDownItem);
+        }
+
+        private void ProcessImageOpening(ToolStripDropDownItem parent)
+            {
+                if (parent != null)
+                    {
+                        string enumVal = pbxPhoto.SizeMode.ToString();
+                        foreach (ToolStripMenuItem item in parent.DropDownItems)//lay ds cac item(kiem traxem = gia tri voi Photo nhan hay k ?)
+                                {
+                                        item.Enabled = (pbxPhoto.Image != null);//neu box co anh thi enable no len, nguoc lai
+                                        item.Checked = item.Tag.Equals(enumVal);//kiemtra 2 chuoi co bang nhau hay k
+                                }
+                    }
+            }
+        private void DisplayAlbum()
+        {
+            pbxPhoto.Image = Manager.CurrentImage;
+            SetStatusStrip();
+            SetTitleBar();
+        }
+        private void NewAlbum()
+        {
+            // TODO: clean up, save existing album
+            Manager = new AlbumManager();
+            DisplayAlbum();
+        }
+       private void SetStatusStrip(string path)
+       {
+           if (pbxPhoto.Image != null)
+               {
+                   ct2.Text = Manager.Current.FileName;
+                   //ct2.Text = path;
+                   statusImageSize.Text = String.Format("{0:#}x{1:#}", pbxPhoto.Image.Width, pbxPhoto.Image.Height);
+                   // statusAlbumPos is set in ch. 6
+               }
+           else
+                {
+                    ct2.Text = null;
+                    statusImageSize.Text = null;
+                    statusAlbumPos.Text = null;
+                }
+}
+
+       private void mnuExit_Click(object sender, EventArgs e)
+       {
+           Close();
+       }
+
+       private void mnuNew_Click(object sender, EventArgs e)
+       {
+            NewAlbum();
+       }
+       }
+       }
+
+        
+
+        
+    }
+
+
+# Photo.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Drawing;
+namespace PhotoAlbum
+{
+    class photo : IDisposable
+    {
+        private string fileName;
+        public string FileName
+        {
+        get {return this.fileName;}
+        }
+        private Bitmap bitmap;
+        public Bitmap Image
+        {
+            get
+            {
+                if (bitmap == null)
+                    bitmap = new Bitmap(fileName);
+                return bitmap;
+            }
+        }
+            private string caption = "";
+        public string Caption
+        {
+            get { return caption; }
+            set
+            {
+                if (caption  != value)
+                {
+                    caption = value;
+                    HasChanged = true;
+                }
+            }
+        }
+
+        private string notes = "";
+        public string Notes
+        {
+            get { return notes; }
+            set
+            {
+                if (notes != value)
+                {
+                    notes = value;
+                    HasChanged = true;
+                }
+            }
+        }
+        private string photographer = "";
+        public string Photographer
+        {
+            get { return photographer; }
+            set {
+                if (photographer != value)
+                {
+                    photographer = value;
+                    HasChanged = true;
+                }    
+                }
+        }
+
+        private bool hasChanged = true;
+        public bool HasChanged
+        {
+            get { return hasChanged;}
+            set { hasChanged = value;}
+        }
+        public override string ToString()
+        {
+            return FileName;
+        }
+        //DUONG DAN
+        public override int GetHashCode()
+        {
+            return ToString().GetHashCode();
+        }
+        public photo(string fileName)
+        {
+            this.fileName = fileName;
+            bitmap = null;
+            caption = System.IO.Path.GetFileNameWithoutExtension(fileName);
+        }
+        public void Dispose()
+        {
+            if (bitmap != null)
+            {
+                bitmap.Dispose();
+                bitmap = null;
+            }
+        }
+        public override bool Equals(object obj)
+        {
+            return GetHashCode() == obj.GetHashCode();    
+        }
+    }
+}
+
+
+#PhotoAlbum.cs
+
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+
+namespace PhotoAlbum
+{
+    class PhotoAlbum : Collection<photo>, IDisposable
+    {
+        private bool hasChanged = false;
+        public bool HasChanged
+        {
+            get
+            {
+                if (hasChanged) return true;
+                foreach (photo p in this)
+                    if (p.HasChanged) return true;
+                return false;
+            }
+            set
+            {
+                hasChanged = value;
+                if (value == false)
+                    foreach (photo p in this)
+                        p.HasChanged = false;
+            }
+        }
+        public void Dispose()
+        {
+            foreach (photo p in this)
+                p.Dispose();
+        }
+        protected override void ClearItems()
+        {
+            if (Count > 0)
+            {
+                Dispose();
+                base.ClearItems();
+                HasChanged = true;
+            }
+        }
+
+
+        protected override void InsertItem(int index, photo item)
+        {
+            base.InsertItem(index, item);
+            HasChanged = true;
+        }
+        protected override void RemoveItem(int index)
+        {
+            Items[index].Dispose();
+            base.RemoveItem(index);
+            HasChanged = true;
+        }
+        protected override void SetItem(int index, photo item)
+        {
+            base.SetItem(index, item);
+            HasChanged = true;
+        }
+    }
+}
